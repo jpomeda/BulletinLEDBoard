@@ -18,6 +18,8 @@
     <Button android:id="@+id/btnAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:text="@string/aceptar" />
+
 
 </LinearLayout>
