@@ -18,7 +18,9 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></LinearLayout>
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -43,5 +45,12 @@
             android:layout_centerHorizontal="true"
             android:text="@string/intercalar"
             android:layout_gravity="center_horizontal" />
+
+        <Button android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BT test" />
+
     </LinearLayout>
+
 </RelativeLayout>

@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.upm.etsit.b105.jpomeda.bulletinledboard">
 
-    <uses-permission android:name="android.permission.BLUETOOTH" /> <!--Permisos de Bluetooth-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />  <!--Permisos de Bluetooth-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
