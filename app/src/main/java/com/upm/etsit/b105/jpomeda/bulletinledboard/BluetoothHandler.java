@@ -5,8 +5,7 @@ package com.upm.etsit.b105.jpomeda.bulletinledboard;
  */
 public interface BluetoothHandler {
 
-    public void read();
-    public void write();
-    public void openConnection();
+    public void read(byte[] bytes);
+    public void write(byte[] bytes);
 
 }
