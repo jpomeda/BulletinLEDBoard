@@ -14,6 +14,8 @@ import android.util.Log;
 import android.content.Intent;
 import java.util.*;
 import java.io.*;
+import android.os.Handler;
+
 
 
 public class ConnectedThread extends Thread{
@@ -22,13 +24,19 @@ public class ConnectedThread extends Thread{
     private final InputStream mmInStream;
     private final OutputStream mmOutStream;
 
+    final int MESSAGE_READ = 1;
 
-    public ConnectedThread (BluetoothSocket socket){
+    Handler h;
+    private final String TAG = "ConnectedThread";
+
+
+    public ConnectedThread (BluetoothSocket socket, Handler h){
 
         mmSocket = socket;
         InputStream tmpIn = null;
         OutputStream tmpOut = null;
 
+        this.h = h;
         // Get the input and output streams, using temp objects because
         // member streams are final
         try {
@@ -51,12 +59,35 @@ public class ConnectedThread extends Thread{
                 // Read from the InputStream
                 bytes = mmInStream.read(buffer);
                 // Send the obtained bytes to the UI activity
-                mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
-                        .sendToTarget();
+                h.obtainMessage(MESSAGE_READ, bytes, -1, buffer).sendToTarget();
             } catch (IOException e) {
                 break;
             }
         }
+    }
+
+    public void write(byte[] bytes) {
+        try {
+            mmOutStream.write(bytes);
+            Log.d(TAG, "Bytes enviados "+bytes);
+        } catch (IOException e) { }
+    }
+
+    public void write(String message) {
+        Log.d(TAG, "Datos a enviar" + message + "...");
+        byte[] msgBuffer = message.getBytes();
+        try {
+            mmOutStream.write(msgBuffer);
+        } catch (IOException e) {
+            Log.d(TAG, "...Error data send: " + e.getMessage() + "...");
+        }
+    }
+
+    /* Call this from the main activity to shutdown the connection */
+    public void cancel() {
+        try {
+            mmSocket.close();
+        } catch (IOException e) { }
     }
 
 

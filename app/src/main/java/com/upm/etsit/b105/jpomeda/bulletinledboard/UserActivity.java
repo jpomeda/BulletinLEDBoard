@@ -9,6 +9,7 @@ import android.bluetooth.*;
 import android.content.*;
 import java.util.*;
 import android.view.*;
+import android.util.Log;
 
 
 public class UserActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class UserActivity extends AppCompatActivity {
     private Button botonBlink;
     private Button botonIntercalar;
 
+    private final String TAG = "UserActivity";
 
 
 
@@ -37,6 +39,7 @@ public class UserActivity extends AppCompatActivity {
         botonBlink.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
                 Intent intent = new Intent(UserActivity.this, BlinkActivity.class);
+                Log.d(TAG, "Intent creado. Iniciando blinkActivity");
                 startActivity(intent);
             }
         });

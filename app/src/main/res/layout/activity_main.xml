@@ -11,15 +11,31 @@
         android:text="@string/usuario" />
 
     <EditText android:id="@+id/txtNombre"
-        android:layout_width="match_parent"
+        android:layout_width="214dp"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:inputType="text"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/Contraseña"
+        android:id="@+id/mainPass" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/mainEditPass"
+        android:layout_gravity="center_horizontal" />
 
     <Button android:id="@+id/btnAceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/aceptar" />
+        android:text="@string/aceptar"
+        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>

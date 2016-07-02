@@ -13,6 +13,7 @@ import android.bluetooth.*;
 import android.content.*;
 import java.util.*;
 import android.view.*;
+import android.os.Handler;
 
 public class BlinkActivity extends AppCompatActivity{
 
@@ -20,6 +21,11 @@ public class BlinkActivity extends AppCompatActivity{
 
     private Button botonEnviar;
     private Button botonCancelar;
+
+    public Bluetooth BT;
+    private Handler handler;
+
+    private final String PRUEBA = "Hola";
 
 
 
@@ -30,11 +36,18 @@ public class BlinkActivity extends AppCompatActivity{
         setContentView(R.layout.activity_blink);
 
 
+        botonEnviar = (Button) findViewById(R.id.botonEnviaBlink);
+        handler = new Handler();
+
+        BT = new Bluetooth(handler);
+
+
+
 
         botonEnviar.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v) {
 
-
+                BT.conexion.mConnectedThread.write(PRUEBA);
             }
 
         });
