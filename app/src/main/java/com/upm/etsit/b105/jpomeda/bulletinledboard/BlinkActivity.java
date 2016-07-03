@@ -8,14 +8,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 import android.bluetooth.*;
 import android.content.*;
+
+import java.io.IOException;
 import java.util.*;
 import android.view.*;
 import android.os.Handler;
 
 public class BlinkActivity extends AppCompatActivity{
+
+    private final String TAG = "BlinkActivity";
 
     private EditText color;
 
@@ -25,6 +30,7 @@ public class BlinkActivity extends AppCompatActivity{
     public Bluetooth BT;
     private Handler handler;
 
+    private String envioColor;
     private final String PRUEBA = "Hola";
 
 
@@ -37,17 +43,18 @@ public class BlinkActivity extends AppCompatActivity{
 
 
         botonEnviar = (Button) findViewById(R.id.botonEnviaBlink);
-        handler = new Handler();
+        color = (EditText) findViewById(R.id.colorTextBlink);
 
-        BT = new Bluetooth(handler);
-
-
-
+        BT = new Bluetooth (handler);
 
         botonEnviar.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v) {
+                try {
+                    BT.conexion.mConnectedThread.write(color.getText().toString());
+                } catch (Exception e) {
+                    Toast.makeText(BlinkActivity.this, "No se pudo enviar", Toast.LENGTH_SHORT).show();
+                }
 
-                BT.conexion.mConnectedThread.write(PRUEBA);
             }
 
         });

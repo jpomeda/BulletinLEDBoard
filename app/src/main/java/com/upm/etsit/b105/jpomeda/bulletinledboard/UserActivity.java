@@ -2,6 +2,7 @@ package com.upm.etsit.b105.jpomeda.bulletinledboard;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.*;
@@ -19,6 +20,9 @@ public class UserActivity extends AppCompatActivity {
 
     private Button botonBlink;
     private Button botonIntercalar;
+
+    private Handler handler;
+    private Bluetooth BT;
 
     private final String TAG = "UserActivity";
 

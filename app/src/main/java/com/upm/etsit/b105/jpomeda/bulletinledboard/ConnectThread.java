@@ -19,6 +19,8 @@ public class ConnectThread extends Thread {
         private final BluetoothSocket mmSocket;
         private final BluetoothDevice mmDevice;
 
+        public Boolean b = false;
+
 
 
 
@@ -76,7 +78,7 @@ public class ConnectThread extends Thread {
                 // until it succeeds or throws an exception
                 Log.d(TAG, "entra en try");
                 mmSocket.connect();
-                Boolean b = mmSocket.isConnected();
+                b = mmSocket.isConnected();
                 Log.d(TAG, "Conectado: "+b.toString());
             } catch (IOException connectException) {
                 // Unable to connect; close the socket and get out

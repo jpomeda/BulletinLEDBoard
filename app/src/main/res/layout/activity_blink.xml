@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Introduce color:"
+        android:text="Selecciona color"
         android:id="@+id/textBlink1" />
 
     <EditText
@@ -33,7 +33,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Button"
+            android:text="Cancelar"
             android:id="@+id/button2" />
     </LinearLayout>
 </LinearLayout>
