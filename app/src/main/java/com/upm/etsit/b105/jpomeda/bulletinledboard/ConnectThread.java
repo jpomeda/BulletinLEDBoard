@@ -21,13 +21,7 @@ public class ConnectThread extends Thread {
 
         public Boolean b = false;
 
-
-
-
-
         Handler h;
-
-
 
         ConnectedThread mConnectedThread;
 
