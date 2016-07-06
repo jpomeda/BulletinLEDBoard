@@ -67,10 +67,17 @@ public class UserActivity extends AppCompatActivity {
         }
 
 
+        if (mBluetoothAdapter.isEnabled()){
+            startService(new Intent(UserActivity.this, BluetoothService.class));
+        }
 
 
 
 
-
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        stopService(new Intent(UserActivity.this, BluetoothService.class));
     }
 }

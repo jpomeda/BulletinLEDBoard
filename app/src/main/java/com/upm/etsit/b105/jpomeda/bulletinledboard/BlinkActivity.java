@@ -45,11 +45,12 @@ public class BlinkActivity extends AppCompatActivity{
         botonEnviar = (Button) findViewById(R.id.botonEnviaBlink);
         color = (EditText) findViewById(R.id.colorTextBlink);
 
-        BT = new Bluetooth (handler);
+        //BT = new Bluetooth (handler);
 
         botonEnviar.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v) {
                 try {
+                    Log.d(TAG, "Enviando..."+color.getText().toString());
                     BT.conexion.mConnectedThread.write(color.getText().toString());
                 } catch (Exception e) {
                     Toast.makeText(BlinkActivity.this, "No se pudo enviar", Toast.LENGTH_SHORT).show();

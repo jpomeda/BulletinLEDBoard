@@ -6,4 +6,5 @@
     <string name="blinkGenerico">Blink</string>
     <string name="intercalar">Intercalar</string>
     <string name="Contraseña">Contraseña</string>
+    <string name="local_service_started">Inicio Bluetooth...</string>
 </resources>
