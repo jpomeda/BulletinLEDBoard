@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.upm.etsit.b105.jpomeda.bulletinledboard.UserActivity">
+    tools:context="com.upm.etsit.b105.jpomeda.bulletinledboard.UserActivity"
+    android:focusableInTouchMode="false">
 
     <LinearLayout
         android:orientation="vertical"
@@ -15,21 +16,13 @@
         android:layout_height="match_parent"
         android:weightSum="1">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
+            android:text="Bienvenido Usuario"
             android:id="@+id/holaUser" />
-
 
 
         <Button android:id="@+id/btnBlink"
@@ -46,11 +39,33 @@
             android:text="@string/intercalar"
             android:layout_gravity="center_horizontal" />
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dimmer"
+            android:id="@+id/btnDimmer"
+            android:layout_gravity="center_horizontal|top" />
+
         <Button android:id="@+id/btnTest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="BT test" />
 
     </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="249dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/weblogo"
+            android:layout_row="14"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal|bottom" />
+
+    </FrameLayout>
 
 </RelativeLayout>

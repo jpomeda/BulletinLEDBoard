@@ -23,10 +23,20 @@ public class BlinkActivity extends AppCompatActivity{
 
     private final String TAG = "BlinkActivity";
 
+    private String trama = "zzzzzz";
+
     private EditText color;
 
     private Button botonEnviar;
-    private Button botonCancelar;
+
+    private Button botonNegro;
+    private Button botonVerde;
+    private Button botonRojo;
+    private Button botonAzul;
+    private Button botonMorado;
+    private Button botonAmarillo;
+    private Button botonBlanco;
+    private Button botonNaranja;
 
     public Bluetooth BT;
     private Handler handler;
@@ -37,8 +47,6 @@ public class BlinkActivity extends AppCompatActivity{
     private BluetoothService btService;
     boolean mBound = false;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -47,24 +55,19 @@ public class BlinkActivity extends AppCompatActivity{
 
 
         botonEnviar = (Button) findViewById(R.id.botonEnviaBlink);
-        color = (EditText) findViewById(R.id.colorTextBlink);
+
+        botonVerde = (Button) findViewById(R.id.buttonGreen);
+        botonRojo = (Button) findViewById(R.id.buttonRed);
+        botonAzul = (Button) findViewById(R.id.buttonBlue);
+        botonMorado = (Button) findViewById(R.id.buttonPurple);
+        botonBlanco = (Button) findViewById(R.id.buttonWhite);
+        botonNaranja = (Button) findViewById(R.id.buttonOrange);
+        botonAmarillo = (Button) findViewById(R.id.buttonYellow);
+        botonNegro = (Button) findViewById(R.id.buttonBlack);
+
+        //color = (EditText) findViewById(R.id.colorTextBlink);
 
         //BT = new Bluetooth (handler);
-
-
-
-        botonEnviar.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View v) {
-                try {
-                    Log.d(TAG, "Enviando..."+color.getText().toString());
-                    //BT.conexion.mConnectedThread.write(color.getText().toString());
-                } catch (Exception e) {
-                    Toast.makeText(BlinkActivity.this, "No se pudo enviar", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-        });
 
     }
 
@@ -75,22 +78,17 @@ public class BlinkActivity extends AppCompatActivity{
         Intent intent = new Intent(this, BluetoothService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
-        botonEnviar.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View v) {
-                try {
-                    Log.d(TAG, "Enviando..."+color.getText().toString());
-                    if (mBound){
+        /* * BOTONES DE COLORES * */
 
-                        btService.conexion.mConnectedThread.write(color.getText().toString());
-                    }
-                    //BT.conexion.mConnectedThread.write(color.getText().toString());
-                } catch (Exception e) {
-                    Toast.makeText(BlinkActivity.this, "No se pudo enviar", Toast.LENGTH_SHORT).show();
-                }
+        asignaColor("arzzzz", botonRojo);
+        asignaColor("abzzzz", botonAzul);
+        asignaColor("agzzzz", botonVerde);
+        asignaColor("awzzzz", botonBlanco);
+        asignaColor("ayzzzz", botonAmarillo);
+        asignaColor("aozzzz", botonNaranja);
+        asignaColor("apzzzz", botonMorado);
+        asignaColor("axzzzz", botonNegro);
 
-            }
-
-        });
     }
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -107,6 +105,28 @@ public class BlinkActivity extends AppCompatActivity{
             mBound = false;
         }
     };
+
+    /* Envia el color respectivo al botón */
+
+    private void asignaColor (final String t, final Button b){
+        b.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v) {
+                try {
+                    Log.d(TAG, "Enviando..."+ b.getText());
+                    if (mBound){
+                        trama = t;
+                        Log.d(TAG, "Trama: "+trama);
+                        btService.conexion.mConnectedThread.write(trama);
+                    }
+                    //BT.conexion.mConnectedThread.write(color.getText().toString());
+                } catch (Exception e) {
+                    Toast.makeText(BlinkActivity.this, "No se pudo enviar", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        });
+    }
 
 
 

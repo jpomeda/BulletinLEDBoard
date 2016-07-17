@@ -10,7 +10,7 @@
     <application
         android:name="com.upm.etsit.b105.jpomeda.bulletinledboard.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/webverde"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -38,6 +38,7 @@
         <activity android:name=".UserActivity"></activity>
         <activity android:name=".BlinkActivity"></activity>
         <activity android:name=".IntercalarActivity"></activity>
+        <activity android:name=".DimmerActivity"></activity>
     </application>
 
 </manifest>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_vertical">
 
 
     <TextView
@@ -9,31 +10,88 @@
         android:layout_height="37dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Selecciona color"
-        android:id="@+id/textBlink1" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/colorTextBlink"
+        android:id="@+id/textBlink1"
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:gravity="center_horizontal"
+        android:weightSum="1">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Enviar"
-            android:id="@+id/botonEnviaBlink"
+            android:text="ROJO"
+            android:id="@+id/buttonRed"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="AZUL"
+            android:id="@+id/buttonBlue"
             android:layout_gravity="center_horizontal" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Cancelar"
-            android:id="@+id/button2" />
+            android:text="VERDE"
+            android:id="@+id/buttonGreen"
+            android:layout_gravity="center_horizontal"
+            android:shadowColor="@color/green"/>
+
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="NARANJA"
+            android:id="@+id/buttonOrange"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="MORADO"
+            android:id="@+id/buttonPurple"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="AMARILLO"
+            android:id="@+id/buttonYellow"
+            android:layout_gravity="center_horizontal"
+            android:shadowColor="@color/green" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:gravity="center_horizontal" >
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="BLANCO"
+            android:id="@+id/buttonWhite"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Apagar"
+            android:id="@+id/buttonBlack" />
+
+    </LinearLayout>
+
 </LinearLayout>

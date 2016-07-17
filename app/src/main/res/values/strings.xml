@@ -7,4 +7,28 @@
     <string name="intercalar">Intercalar</string>
     <string name="Contraseña">Contraseña</string>
     <string name="local_service_started">Inicio Bluetooth...</string>
+
+
+    <string-array name="colors_array">
+        <item>Azul</item>
+        <item>Rojo</item>
+        <item>Verde</item>
+        <item>Amarillo</item>
+        <item>Naranja</item>
+        <item>Morado</item>
+        <item>Blanco</item>
+    </string-array>
+
+    <string-array name="duracion_array">
+        <item>100 ms</item>
+        <item>200 ms</item>
+        <item>500 ms</item>
+        <item>1 s</item>
+        <item>2 s</item>
+    </string-array>
+
+    <string-array name="dimmer_array">
+        <item>DimmerUp</item>
+        <item>DimmerDown</item>
+    </string-array>
 </resources>

@@ -30,20 +30,13 @@ public class UserActivity extends AppCompatActivity {
 
     private Button botonBlink;
     private Button botonIntercalar;
-    private Button btTest;
+    private Button botonDimmer;
+    private Button botonTest;
 
-    private Handler handler;
     private BluetoothService btService;
 
     private final String TAG = "UserActivity";
 
-    /* TRAMA A ENVIAR A LA RASPBERRY */
-
-    public String trama = "";
-
-    private enum Efecto {BLINK, INTERCALAR, DIMMER}
-    private enum Color {ROJO, AZUL, VERDE, BLANCO, NEGRO}
-    private int duración;
 
     /* * * * * * * * * * * * * * * * */
 
@@ -54,6 +47,8 @@ public class UserActivity extends AppCompatActivity {
 
         botonBlink = (Button) findViewById(R.id.btnBlink);
         botonIntercalar = (Button) findViewById(R.id.btnIntercalar);
+        botonDimmer = (Button) findViewById(R.id.btnDimmer);
+        botonTest = (Button) findViewById(R.id.btnTest);
 
         usuario = (TextView)findViewById(R.id.holaUser); // 'enlazamos' el control con el cuadro de texto
 
@@ -73,6 +68,24 @@ public class UserActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserActivity.this, IntercalarActivity.class);
                 Log.d(TAG, "Intent creado. Iniciando IntercalarActivity");
                 startActivity(intent);
+            }
+        });
+
+        botonDimmer.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                Intent intent = new Intent(UserActivity.this, DimmerActivity.class);
+                Log.d(TAG, "Intent creado. Iniciando DimmerActivity");
+                startActivity(intent);
+            }
+        });
+
+        botonTest.setOnClickListener(new View.OnClickListener(){
+            public void onClick (View v){
+                if(btService.conexion.isAlive()){
+                    Toast.makeText(UserActivity.this, "Conectado con Raspberry Pi", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(UserActivity.this, "No conectado con Raspberry Pi", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -112,6 +125,9 @@ public class UserActivity extends AppCompatActivity {
             startService(i);
         }
 
+        Intent intent = new Intent(this, BluetoothService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
     }
 
     @Override
@@ -124,4 +140,19 @@ public class UserActivity extends AppCompatActivity {
         super.onDestroy();
         stopService(new Intent(UserActivity.this, BluetoothService.class));
     }
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            BluetoothService.LocalBinder binder = (BluetoothService.LocalBinder) service;
+            btService = binder.getService();
+            mBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.e(TAG, "onServiceDisconnected");
+            mBound = false;
+        }
+    };
 }
